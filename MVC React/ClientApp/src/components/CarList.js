@@ -28,12 +28,14 @@ class CarList extends Component {
     }
 
 
+
     render() {
 
         let header = <div className="p-clearfix"
             style={{ lineHeight: '1.87em' }}>MVC React Cars </div>;
 
-        let footer = <div className="p-clearfix" style={{ width: '100%' }}> </div>;
+        let footer = <div className="p-clearfix" style={{ width: '100%' }}></div>; 
+
 
 
         return (

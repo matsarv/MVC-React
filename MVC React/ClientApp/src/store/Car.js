@@ -13,7 +13,6 @@ export const actionCreators = {
         const cars = await response.json();
         dispatch({ type: 'FETCH_CARS', cars });
     }
-
 };
 
 export const reducer = (state, action) => {

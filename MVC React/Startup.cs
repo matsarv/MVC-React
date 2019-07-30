@@ -29,7 +29,7 @@ namespace MVC_React
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            // Add
+            // Add this
             services.AddDbContext<CarDBContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("CarDatabase")));
 
