@@ -45,6 +45,10 @@ namespace DataAccessLibrary.Models
                 entity.Property(e => e.ProductionYear).HasMaxLength(50);
 
                 entity.Property(e => e.Color).HasMaxLength(50);
+
+                entity.Property(e => e.Fuel).HasMaxLength(50);
+
+                entity.Property(e => e.GearBox).HasMaxLength(50);
             });
 
         }

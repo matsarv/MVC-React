@@ -11,5 +11,7 @@ namespace DataAccessLibrary.Models
         public string Brand { get; set; }
         public string ProductionYear { get; set; }
         public string Color { get; set; }
+        public string Fuel { get; set; }
+        public string GearBox { get; set; }
     }
 }

@@ -22,7 +22,9 @@ namespace BusinessLibrary.Service
                                   FullModelName = a.FullModelName,
                                   Brand = a.Brand,
                                   ProductionYear = a.ProductionYear,
-                                  Color = a.Color
+                                  Color = a.Color,
+                                  Fuel = a.Fuel,
+                                  GearBox = a.GearBox
                               }).ToListAsync();
             }
         }
@@ -41,7 +43,9 @@ namespace BusinessLibrary.Service
                         FullModelName = carModel.FullModelName,
                         Brand = carModel.Brand,
                         ProductionYear = carModel.ProductionYear,
-                        Color = carModel.Color
+                        Color = carModel.Color,
+                        Fuel = carModel.Fuel,
+                        GearBox = carModel.GearBox
                     };
                     db.Cars.Add(car);
 
@@ -52,6 +56,8 @@ namespace BusinessLibrary.Service
                     car.Brand = carModel.Brand;
                     car.ProductionYear = carModel.ProductionYear;
                     car.Color = carModel.Color;
+                    car.Fuel = carModel.Fuel;
+                    car.GearBox = carModel.GearBox;
                 }
 
                 return await db.SaveChangesAsync() >= 1;

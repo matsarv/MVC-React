@@ -19,6 +19,9 @@ namespace MVC_React
             Configuration = configuration;
         }
 
+        //API
+        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -27,9 +30,9 @@ namespace MVC_React
             // Add
             services.AddTransient<ICarService, CarService>();
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            // Add this
+            // Add - SeedData
+            //https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-mvc-app/working-with-sql?view=aspnetcore-2.2&tabs=visual-studio
             services.AddDbContext<CarDBContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("CarDatabase")));
 
@@ -38,9 +41,25 @@ namespace MVC_React
             {
                 configuration.RootPath = "ClientApp/build";
             });
+
+
+            //API https://docs.microsoft.com/en-us/aspnet/core/security/cors?view=aspnetcore-2.2
+            services.AddCors(options =>
+            {
+                options.AddPolicy(MyAllowSpecificOrigins,
+                builder =>
+                {
+                    builder.WithOrigins("*")
+                                        .AllowAnyHeader()
+                                        .AllowAnyMethod();
+                });
+            });
+
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
@@ -53,6 +72,9 @@ namespace MVC_React
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            // API
+            app.UseCors(MyAllowSpecificOrigins);
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
