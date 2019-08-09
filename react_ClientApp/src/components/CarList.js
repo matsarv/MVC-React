@@ -78,7 +78,7 @@ class CarList extends Component {
     addNew() {
         this.newCar = true;
         this.setState({
-            car: { fullModelName: '', brand: '', productionYear: '', color: '', fuel: '', gearBox: '' },
+            car: { fullModelName: 'X99', brand: 'VOLVO', productionYear: '2119', color: 'Svart', fuel: 'Skräp', gearBox: 'Brain' },
             displayDialog: true
         });
     }
@@ -160,7 +160,7 @@ class CarList extends Component {
             <Button label="Radera" disabled={this.newCar ? true : false}
                 icon="pi pi-minus-circle" onClick={this.delete} />
             <Button label={this.newCar ? "Spara" : "Uppdatera"} icon="pi pi-check-circle"
-                onClick={this.save} tooltip="OBS!<br>Alla fälten ovan<br> måste vara ifyllda"/>
+                onClick={this.save} tooltip="OBS!<br>Alla fälten ovan<br> måste vara ifyllda" tooltipOptions={{ position: 'left' }} />
             <Button label="Stäng" icon="pi pi-times-circle" onClick={this.dialogHide} />
         </div>;
 
@@ -177,6 +177,8 @@ class CarList extends Component {
                     <Column field="brand" header="Märke" sortable={true} filter={true} />
                     <Column field="productionYear" header="År" sortable={true} filter={true} />
                     <Column field="color" header="Färg" sortable={true} filter={true} />
+                    {/* <Column field="fuel" header="Drivmedel" sortable={true} filter={true} />
+                    <Column field="gearBox" header="Växellåda" sortable={true} filter={true} /> */}
                 </DataTable>
                 <Dialog visible={this.state.displayDialog} style={{ 'width': '400px' }}
                     header="Mer info om bilen" modal={true} closable={true} footer={dialogFooter}
@@ -194,7 +196,6 @@ class CarList extends Component {
 
                             <div style={{ paddingTop: '10px' }}>
                                 <label htmlFor="brand">Bilmärke</label></div>
-
                             <div>
                                 <Dropdown
                                     style={{ width: 150 }}
@@ -227,6 +228,7 @@ class CarList extends Component {
                                 <InputText id="fuel" onChange={(e) => { this.updateProperty('fuel', e.target.value) }}
                                     value={this.state.car.fuel} />
                             </div>
+
                             <div style={{ paddingTop: '10px' }}>
                                 <label htmlFor="gearBox">Växellåda</label></div>
                             <div>

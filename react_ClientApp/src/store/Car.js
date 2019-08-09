@@ -10,7 +10,7 @@ const initialState = {
 export const actionCreators = {
     requestCars: () => async (dispatch, getState) => {
         axios
-            .get('api/Car/Cars')
+            .get('https://localhost:44371/api/Car/Cars')
             .then(function (response) {
                 const cars = response.data;
                 dispatch({ type: 'FETCH_CARS', cars });
@@ -20,15 +20,16 @@ export const actionCreators = {
                 // console.log(response.headers);
                 // console.log(response.config);
             });
-        //const url = 'api/Car/Cars';
-        //const response = await fetch(url);
-        //const cars = await response.json();
-        //dispatch({ type: 'FETCH_CARS', cars });
+
+        // const url = 'https://localhost:44371/api/Car/Cars';
+        // const response = await fetch(url);
+        // const cars = await response.json();
+        // dispatch({ type: 'FETCH_CARS', cars });
     },
     saveCar: car => async (dispatch, getState) => {
-
+        console.log('CarId: ' + car.carId);
         axios
-            .post('api/Car/SaveCar/', car)
+            .post('https://localhost:44371/api/Car/SaveCar/', car)
             .then(function (response) {
                 const car = response.data;
                 dispatch({ type: 'SAVE_CAR', car });
@@ -38,22 +39,23 @@ export const actionCreators = {
                 // console.log(response.headers);
                 // console.log(response.config);
             });
-        //const url = 'api/Car/SaveCar';
-        //const headers = new Headers();
-        //headers.append('Content-Type', 'application/json');
-        //const requestOptions = {
-        //    method: 'POST',
-        //    headers,
-        //    body: JSON.stringify(car)
-        //};
-        //const request = new Request(url, requestOptions);
-        //await fetch(request);
-        //dispatch({ type: 'SAVE_CAR', car });
+
+        // const url = 'https://localhost:44371/api/Car/SaveCar';
+        // const headers = new Headers();
+        // headers.append('Content-Type', 'application/json');
+        // const requestOptions = {
+        //     method: 'POST',
+        //     headers,
+        //     body: JSON.stringify(car)
+        // };
+        // const request = new Request(url, requestOptions);
+        // await fetch(request);
+        // dispatch({ type: 'SAVE_CAR', car });
     },
     deleteCar: carId => async (dispatch, getState) => {
-
+        console.log('CarId: ' + carId);
         axios
-            .delete(`api/Car/DeleteCar/${carId}`)
+            .delete(`https://localhost:44371/api/Car/DeleteCar/${carId}`)
             .then(function (response) {
                 // const car = response.data;
                 dispatch({ type: 'DELETE_CAR', carId });
@@ -63,13 +65,14 @@ export const actionCreators = {
                 // console.log(response.headers);
                 // console.log(response.config);
             });
-        //const url = 'api/Car/DeleteCar/' + carId;
-        //const requestOptions = {
-        //    method: 'DELETE',
-        //};
-        //const request = new Request(url, requestOptions);
-        //await fetch(request);
-        //dispatch({ type: 'DELETE_CAR', carId });
+
+        // const url = 'https://localhost:44371/api/Car/DeleteCar/' + carId;
+        // const requestOptions = {
+        //     method: 'DELETE',
+        // };
+        // const request = new Request(url, requestOptions);
+        // await fetch(request);
+        // dispatch({ type: 'DELETE_CAR', carId });
     }
 
 };
