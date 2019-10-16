@@ -33,7 +33,8 @@ export default class NavMenu extends React.Component {
               <ul className="navbar-nav flex-grow">
                 <NavItem>
                     <NavLink tag={Link} className={themeColor} to="/About" >Information</NavLink>
-                </NavItem>
+                            </NavItem>
+
               </ul>
             </Collapse>
           </Container>
