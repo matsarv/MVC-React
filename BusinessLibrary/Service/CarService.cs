@@ -38,6 +38,7 @@ namespace BusinessLibrary.Service
                          (x => x.CarId == carModel.CarId).FirstOrDefault();
                 if (car == null)
                 {
+                    //
                     car = new Car()
                     {
                         FullModelName = carModel.FullModelName,
